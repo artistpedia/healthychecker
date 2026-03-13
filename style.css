@@ -6,7 +6,32 @@
     --background-color: #f4f7f6;
     --card-background: #ffffff;
     --text-color: #333;
+    --muted-text-color: #777;
+    --border-color: #ddd;
+    --input-background: #ffffff;
+    --input-border-color: #ccc;
+    --toggle-background: #ffffff;
+    --toggle-text-color: #1f2937;
+    --reset-background: #ccc;
+    --reset-hover-background: #999;
     --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] {
+    --primary-color: #7cc6ff;
+    --secondary-color: #59e1c4;
+    --background-color: #111827;
+    --card-background: #1f2937;
+    --text-color: #f3f4f6;
+    --muted-text-color: #cbd5e1;
+    --border-color: #334155;
+    --input-background: #0f172a;
+    --input-border-color: #475569;
+    --toggle-background: #0f172a;
+    --toggle-text-color: #f8fafc;
+    --reset-background: #475569;
+    --reset-hover-background: #64748b;
+    --shadow-color: rgba(15, 23, 42, 0.45);
 }
 
 body {
@@ -16,11 +41,19 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 20px;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 header {
     text-align: center;
     margin-bottom: 40px;
+}
+
+.header-controls {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 900px;
+    margin: 0 auto 16px;
 }
 
 .brand-kicker {
@@ -43,7 +76,7 @@ header {
 }
 
 .branding p {
-    color: #777;
+    color: var(--muted-text-color);
     margin: 10px auto 0;
     max-width: 640px;
 }
@@ -61,7 +94,7 @@ main {
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 4px 12px var(--shadow-color);
-    transition: transform 0.2s;
+    transition: transform 0.2s, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
@@ -76,7 +109,7 @@ main {
 }
 
 fieldset {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 20px;
@@ -92,9 +125,15 @@ input, select, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
     border-radius: 4px;
+    background-color: var(--input-background);
+    color: var(--text-color);
     box-sizing: border-box; /* Important for padding and width */
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--muted-text-color);
 }
 
 .form-buttons {
@@ -118,12 +157,24 @@ button:hover {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
+button.theme-toggle {
+    background-color: var(--toggle-background);
+    color: var(--toggle-text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+button.theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
 button[type="reset"] {
-    background-color: #ccc;
+    background-color: var(--reset-background);
 }
 
 button[type="reset"]:hover {
-    background-color: #999;
+    background-color: var(--reset-hover-background);
 }
 
 #score-display {

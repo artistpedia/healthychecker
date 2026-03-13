@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calculateBtn = document.getElementById('calculate-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+
+    initializeTheme(themeToggleBtn);
 
     calculateBtn.addEventListener('click', () => {
         // --- 1. GET USER INPUTS ---
@@ -30,7 +33,32 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFeedback(totalScore);
         updateQuest(totalScore, targetScore, exerciseType);
     });
+
+    themeToggleBtn.addEventListener('click', () => {
+        const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme, themeToggleBtn);
+        localStorage.setItem('healthychecker-theme', nextTheme);
+    });
 });
+
+function initializeTheme(themeToggleBtn) {
+    const savedTheme = localStorage.getItem('healthychecker-theme');
+    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    applyTheme(savedTheme || preferredTheme, themeToggleBtn);
+}
+
+function applyTheme(theme, themeToggleBtn) {
+    const isDark = theme === 'dark';
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+    document.body.dataset.theme = isDark ? 'dark' : 'light';
+    themeToggleBtn.textContent = isDark ? '화이트모드' : '다크모드';
+    themeToggleBtn.setAttribute('aria-label', isDark ? '화이트모드로 전환' : '다크모드로 전환');
+
+    if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', isDark ? '#111827' : '#f4f7f6');
+    }
+}
 
 /**
  * Calculates the food score (Max 50 points)
