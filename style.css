@@ -1,1 +1,177 @@
-/* Add styles here */
+/* style.css */
+
+:root {
+    --primary-color: #4A90E2; /* Trustworthy Blue */
+    --secondary-color: #50E3C2; /* Energetic Teal */
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.brand-kicker {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: rgba(74, 144, 226, 0.12);
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.branding h1 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.branding p {
+    color: #777;
+    margin: 10px auto 0;
+    max-width: 640px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.input-card h2, .result-card h2, .quest-card h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important for padding and width */
+}
+
+.form-buttons {
+    text-align: center;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #357ABD;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+button[type="reset"] {
+    background-color: #ccc;
+}
+
+button[type="reset"]:hover {
+    background-color: #999;
+}
+
+#score-display {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.score {
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.grade {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+#score-details, #feedback, #quest-display {
+    text-align: center;
+}
+
+#quest-display ul {
+    margin: 16px 0 0;
+    padding-left: 20px;
+    text-align: left;
+}
+
+#quest-display li {
+    margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .input-card {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+    .result-card {
+        grid-column: 2 / 3;
+    }
+    .quest-card {
+        grid-column: 2 / 3;
+    }
+}

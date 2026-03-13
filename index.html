@@ -1,14 +1,105 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건강점수 계산기 | healthychecker</title>
+    <meta name="description" content="healthychecker 건강점수 계산기에서 식사, 운동, 수면 기록을 바탕으로 오늘의 건강 점수를 계산해보세요.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <div class="branding">
+            <p class="brand-kicker">healthychecker</p>
+            <h1>건강점수 계산기</h1>
+            <p>식사, 운동, 수면 기록을 바탕으로 오늘의 건강 상태를 한눈에 확인하세요.</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="card input-card">
+            <h2>오늘의 기록</h2>
+
+            <form id="health-form">
+                <fieldset>
+                    <legend>음식 섭취</legend>
+                    <select id="meal-type">
+                        <option value="balanced">균형 잡힌 식사</option>
+                        <option value="protein">단백질 위주 식사</option>
+                        <option value="light">가벼운 식사</option>
+                        <option value="mixed">보통 / 혼합형</option>
+                        <option value="fastfood">자극적 / 패스트푸드 / 야식 위주</option>
+                    </select>
+                    <select id="veggie-intake">
+                        <option value="high">채소 섭취량 (많음)</option>
+                        <option value="medium">채소 섭취량 (보통)</option>
+                        <option value="low">채소 섭취량 (적음)</option>
+                    </select>
+                    <select id="protein-intake">
+                        <option value="high">단백질 섭취량 (많음)</option>
+                        <option value="medium">단백질 섭취량 (보통)</option>
+                        <option value="low">단백질 섭취량 (적음)</option>
+                    </select>
+                    <input type="number" id="water-intake" placeholder="물 섭취량 (잔)">
+                    <input type="number" id="sweets-intake" placeholder="단 음식/음료 (횟수)">
+                    <textarea id="food-memo" placeholder="음식 메모 (선택 사항)"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>운동</legend>
+                    <select id="exercise-type">
+                        <option value="none">운동 안 함</option>
+                        <option value="walking">걷기</option>
+                        <option value="running">러닝</option>
+                        <option value="cycling">자전거</option>
+                        <option value="strength">헬스 / 근력운동</option>
+                        <option value="yoga">요가 / 필라테스</option>
+                        <option value="sports">구기종목 / 스포츠</option>
+                    </select>
+                    <input type="number" id="exercise-duration" placeholder="운동 시간 (분)">
+                    <input type="number" id="step-count" placeholder="걸음 수">
+                    <select id="exercise-intensity">
+                        <option value="low">낮음</option>
+                        <option value="medium">보통</option>
+                        <option value="high">높음</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>생활</legend>
+                    <input type="number" id="sleep-duration" placeholder="수면 시간 (시간)">
+                    <input type="number" id="target-score" placeholder="목표 평균 점수">
+                </fieldset>
+
+                <div class="form-buttons">
+                    <button type="button" id="calculate-btn">건강 점수 계산하기</button>
+                    <button type="reset">초기화</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card result-card">
+            <h2>오늘의 건강 점수</h2>
+            <div id="score-display">
+                <p class="score">0</p>
+                <p class="grade">_</p>
+            </div>
+            <div id="score-details">
+                <p>식사: 0 | 운동: 0 | 수면: 0</p>
+            </div>
+            <div id="feedback">
+                <p>기록을 입력한 뒤 건강 점수 계산하기 버튼을 눌러주세요.</p>
+            </div>
+        </div>
+
+        <div class="card quest-card">
+            <h2>점수 개선 가이드</h2>
+            <div id="quest-display">
+                <p>목표 점수를 입력하면 필요한 활동을 안내해드립니다.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
 </body>
 </html>
